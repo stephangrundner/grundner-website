@@ -1,0 +1,11 @@
+<html xmlns:th="//www.thymeleaf.org" th:remove="tag">
+<div class="container"
+     th:each="photo : ${photos}"
+     th:with="photo=${photos[0]}">
+    <div class="row">
+        <div class="col">
+            <img class="img-fluid" th:data-src="${photo.image[0].url}">
+        </div>
+    </div>
+</div>
+</html>

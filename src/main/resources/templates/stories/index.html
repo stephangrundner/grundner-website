@@ -1,0 +1,21 @@
+<html xmlns:th="//www.thymeleaf.org"
+      th:replace="
+      page(main=~{::main},
+      noindex=true,
+      description='Eine Liste aktueller Geschichten von Stephan Grundner')">
+<th:block th:fragment="main">
+
+<div class="container">
+    <div class="row" th:each="story : ${stories}">
+        <div class="col-md-6 offset-md-4">
+            <h2 class="text-uppercase" th:text="${story.title[0].value}">Story title</h2>
+            <small class="text-muted" th:text="${#dates.format(story.date, 'dd MMMM yyyy')}">Date</small>
+            <p>
+                <a th:href="${story.url}">Go to</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+</th:block>
+</html>

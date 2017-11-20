@@ -1,0 +1,20 @@
+<html xmlns:th="//www.thymeleaf.org" th:remove="tag">
+<div class="container">
+    <div class="row align-items-end">
+        <div class="col-md-6" th:if="${n >= 1}">
+            <img class="img-fluid"  th:data-src="${photos[0].image[0].url}" />
+        </div>
+        <div class="col-md-6" th:if="${n >= 2}">
+            <img class="img-fluid" th:data-src="${photos[1].image[0].url}" />
+        </div>
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row" th:if="${n >= 3}">
+        <div class="col-md-12">
+            <img class="img-fluid" th:data-src="${photos[2].image[0].url}" />
+        </div>
+    </div>
+</div>
+</html>

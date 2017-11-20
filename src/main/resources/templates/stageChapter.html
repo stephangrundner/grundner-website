@@ -1,0 +1,79 @@
+<html xmlns:th="//www.thymeleaf.org" th:remove="tag">
+<div class="container-fluid stage-chapter">
+
+<style type="text/css">
+
+@keyframes fly-in {
+    0%   {left:0px; top:25px; opacity:0;}
+    100% {left:0px; top:0px;  opacity:1;}
+}
+@keyframes fade-in {
+    from   {opacity:0;}
+    to     {opacity:1;}
+}
+
+.stage-chapter {
+
+}
+
+.stage-chapter .stage-chapter-overlay {
+    position: relative;
+    background:rgba(0, 0, 0, 0.45);
+    height:100%;
+}
+
+.stage-chapter .stage-chapter-overlay h1 {
+    padding-top:32vh;
+}
+
+.stage-chapter .stage-chapter-overlay h1 :nth-child(1) {
+    text-transform:uppercase;
+}
+
+.fade-in {
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-delay: 0.8s;
+
+    animation: bubble 1.0s forwards;
+    -webkit-animation: bubble 1.0s forwards; /* for less modern browsers */
+}
+
+.fly-in {
+    animation-name: fly-in;
+    animation-duration: 0.5s;
+    position: relative;
+}
+
+.fly-in-second {
+    animation-name: fly-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    position: relative;
+}
+
+</style>
+    <div class="row align-items-center">
+        <div class="col text-center fade-in"
+             th:style="'
+             background-color: black;
+             background-image: url(__${photo[0].image[0].url}__);
+             background-size: cover;
+             background-position: center;
+             height:calc(100vh - 56px);
+             padding:0;'">
+
+            <div class="stage-chapter-overlay">
+                <h1 class="display-1 text-white">
+                    <span class="fly-in" th:text="${title[0].value}">Title</span> <br />
+                    <small class="text-mute text-white font-weight-light fly-in-second"
+                           th:text="${story.title[0].value}">Subtitle</small>
+                </h1>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</html>

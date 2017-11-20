@@ -1,0 +1,20 @@
+<html xmlns:th="//www.thymeleaf.org" th:remove="tag">
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h1 class="display-3">
+                <span class="text-uppercase" th:text="${title[0].value}">Title</span>
+            </h1>
+            <h2 class="text-primary" th:text="${subtitle[0].value}">Subtitle</h2>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+            <p th:utext="${text[0].value}">Text</p>
+        </div>
+    </div>
+
+</div>
+</html>

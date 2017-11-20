@@ -1,0 +1,99 @@
+<!doctype html>
+<html xmlns:th="//www.thymeleaf.org" lang="de">
+<head>
+<title th:if="${label != null}">
+	[[${label}]] | www.grundner.biz
+</title>
+<title th:if="${label == null}">
+	www.grundner.biz
+</title>
+
+<meta charset="utf-8" />
+<meta name="description" th:content="${description}" />
+<meta name="robots" content="noindex" th:remove="${noindex == null} ? tag : _" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+<style type="text/css">
+.footer {
+	padding-bottom: 55px;
+}
+</style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-default">
+<div class="container-fluid">
+	<a class="navbar-brand" href="/">
+		<span class="font-weight-light text-uppercase text-dark text-strong">
+			<span>Stephan Grundner</span>
+		</span>
+	</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent"
+			aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse pull-right" id="navbarSupportedContent">
+		<ul class="navbar-nav ml-auto ">
+			<li class="nav-item">
+				<a class="nav-link text-uppercase" href="contact">
+					<small>Kontakt</small>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/admin" rel="nofollow">
+					<i class="fa fa-sign-in"></i>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+</nav>
+
+<th:block th:replace="${main} ?: _" />
+
+<hr />
+<div class="container-fluid text-center">
+	<!--<a href="javascript:window.scrollTo(0, 0);"-->
+	<a href="javascript:$(document).scrollTop(0);"
+	   class="btn btn-primary"
+	   style="position:relative; top:-35px; ">
+		<i class="fa fa-angle-up"></i>
+	</a>
+</div>
+
+<div class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col text-center text-primary">
+				<h6 class="display-4 text-uppercase">Stephan Grundner</h6>
+				<p class="font-weight-light text-muted">
+					Fotograf and Softwareentwickler aus Tirol/Österreich
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/jquery.unveil.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function($) {
+	$("img").unveil(0, function(e) {
+		$(this).hide().fadeIn(800);
+	});
+
+	$("input[name='important']").closest(".row").hide();
+});
+</script>
+</body>
+</html>

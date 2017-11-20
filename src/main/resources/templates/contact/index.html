@@ -1,0 +1,90 @@
+<html xmlns:th="//www.thymeleaf.org"
+      th:replace="
+      page(main=~{::main},
+      noindex=true)">
+<th:block th:fragment="main">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Kontakt</h2>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Vorname</label>
+                    <span>*</span>
+                    <input type="text" class="form-control">
+                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Nachname</label>
+                    <span>*</span>
+                    <input type="text" class="form-control">
+                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>E-Mail-Adresse</label>
+                    <span>*</span>
+                    <input type="email" class="form-control">
+                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="tel" class="form-control">
+                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Sehr wichtig</label>
+                    <input name="important" type="text" class="form-control">
+                    <small class="form-text text-muted">A really important thing.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Nachricht</label>
+                    <textarea class="form-control"></textarea>
+                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary">
+                    <i></i>
+                    Nachricht verschicken
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</th:block>
+</html>

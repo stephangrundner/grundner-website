@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:seed="http://www.getwebseed.com/dialect/"
+      th:replace="
+      page(main=~{::main},
+      description=${description[0]?.value})">
+
+<th:block th:fragment="main" th:with="story=${self}">
+<style>
+.story-page-chapter {
+    padding-bottom: 55px;
+}
+</style>
+    <div th:each="chapter : ${chapters}"
+         class="story-page-chapter">
+        <th:block seed:replace="${chapter}" />
+    </div>
+</th:block>
+</html>

@@ -1,0 +1,22 @@
+<html xmlns:th="//www.thymeleaf.org" th:remove="tag">
+
+<th:block th:with="n=${photos.size()}">
+
+    <th:block th:if="${layout}" th:switch="${layout[0]?.value}">
+        <th:block th:case="'full'">
+            <th:block th:replace="photoChapter/full" />
+        </th:block>
+        <th:block th:case="'wide'">
+            <th:block th:replace="photoChapter/wide" />
+        </th:block>
+        <th:block th:case="'twoToOne'">
+            <th:block th:replace="photoChapter/twoToOne" />
+        </th:block>
+        <th:block th:case="*">
+            <th:block th:replace="photoChapter/standard" />
+        </th:block>
+    </th:block>
+
+</th:block>
+
+</html>
