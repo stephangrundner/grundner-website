@@ -15,11 +15,17 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+<link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
 <style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300');
 .footer {
 	padding-bottom: 55px;
 }
+_h1 {
+	font-family: 'Quicksand', sans-serif !important;
+}
 </style>
+
 </head>
 <body>
 
@@ -39,7 +45,20 @@
 	</button>
 
 	<div class="collapse navbar-collapse pull-right" id="navbarSupportedContent">
-		<ul class="navbar-nav ml-auto ">
+		<ul class="navbar-nav ml-auto" th:with="hierarchy = ${@hierarchyService.getHierarchy('menu')}">
+
+
+			<li class="nav-item"
+				th:each="node : ${hierarchy.rootNodes}"
+				th:with="item = ${node.leaf?.published}"
+				th:class="${node.belongsTo(this)} ? active : _">
+				<a class="nav-link text-uppercase"
+				   th:href="${@itemService.getUrl(item)}">
+					<small th:text="${@itemService.getLabelText(item)}">Title</small>
+				</a>
+			</li>
+
+
 			<li class="nav-item">
 				<a class="nav-link text-uppercase" href="/contact">
 					<small>Kontakt</small>
@@ -77,6 +96,22 @@
 				</p>
 			</div>
 		</div>
+		<div class="row text-center">
+			<div class="col text-white">
+				<a href="#" aria-disabled="true" target="_blank" class="btn btn-primary disabled" title="RSS Feed | Bald verfügbar!">
+					<i class="fa fa-rss"></i>
+				</a>
+				<a href="https://www.facebook.com/stephangrundner" target="_blank" class="btn btn-primary " title="Facebook">
+					<i class="fa fa-facebook"></i>
+				</a>
+				<a href="https://www.xing.com/profile/Stephan_Grundner" target="_blank" class="btn btn-primary " title="Xing">
+					<i class="fa fa-xing"></i>
+				</a>
+				<a href="https://www.linkedin.com/in/stephan-grundner-97690682" target="_blank" class="btn btn-primary " title="LinkedIn">
+					<i class="fa fa-linkedin"></i>
+				</a>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -92,7 +127,9 @@ $(document).ready(function($) {
 		$(this).hide().fadeIn(800);
 	});
 
-	$("input[name='important']").closest(".row").hide();
+	$("input[name='important']")
+		.closest(".row")
+		.hide();
 });
 </script>
 </body>

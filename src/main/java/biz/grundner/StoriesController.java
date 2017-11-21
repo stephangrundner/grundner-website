@@ -34,7 +34,7 @@ public class StoriesController {
                 "join l.published i " +
                 "where i != null " +
                 "and i.structureName = ?1 " +
-                "order by i.createdAt";
+                "order by i.createdAt desc";
         TypedQuery<Item> query = entityManager.createQuery(qlString, Item.class);
         query.setParameter(1, "story");
 

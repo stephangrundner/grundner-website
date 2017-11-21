@@ -112,6 +112,7 @@ public class Application {
                 .configure(this::textChapter)
                 .configure(this::photoChapter)
                 .configure(this::stageChapter)
+                .createHierarchy("menu")
                 .createStructure("story").setPublishable(true)
                     .addTextAttribute("title")
                     .addTextAttribute("subtitle")
