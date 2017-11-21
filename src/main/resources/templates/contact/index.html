@@ -2,6 +2,24 @@
       th:replace="
       page(main=~{::main},
       noindex=true)">
+
+<th:block th:fragment="field(bindingPath,label,help,required,type)">
+    <div class="form-group">
+        <label th:text="${label}">Label</label>
+        <span th:if="${required == true}" class="text-secondary">*</span>
+        <input type="text" class="form-control"
+               th:if="${type == 'text'}"
+               th:field="*{__${bindingPath}__}"
+               th:classappend="${#fields.hasErrors('__${bindingPath}__')} ? is-invalid : _">
+        <textarea class="form-control"
+                  th:if="${type == 'longtext'}"
+                  th:field="*{__${bindingPath}__}"
+                  th:classappend="${#fields.hasErrors('__${bindingPath}__')} ? is-invalid : _"></textarea>
+        <small th:if="${#fields.hasErrors('__${bindingPath}__')}" class="form-text text-muted"
+               th:errors="*{__${bindingPath}__}">Help text</small>
+    </div>
+</th:block>
+
 <th:block th:fragment="main">
 
 <div class="container">
@@ -9,75 +27,48 @@
         <div class="col-md-12">
             <h2>Kontakt</h2>
 
-
+            <div th:if="${success}" class="alert alert-success text-center" role="alert">
+                <span>Vielen Dak für Ihre Nachricht!</span>
+            </div>
         </div>
     </div>
 </div>
 
 
 <div class="container">
-    <form>
+    <form th:object="${message}">
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Vorname</label>
-                    <span>*</span>
-                    <input type="text" class="form-control">
-                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Nachname</label>
-                    <span>*</span>
-                    <input type="text" class="form-control">
-                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
+            <div class="col-md-12">
+                <th:block th:replace="::field('name', 'Name', 'Bla bla bla', true, text)" />
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group">
-                    <label>E-Mail-Adresse</label>
-                    <span>*</span>
-                    <input type="email" class="form-control">
-                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
+                <th:block th:replace="::field('email', 'E-Mail-Addresse', 'Bla bla bla', true, text)" />
             </div>
             <div class="col-md-6">
-                <div class="form-group">
-                    <label>Telefon</label>
-                    <input type="tel" class="form-control">
-                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
+                <th:block th:replace="::field('phone', 'Telefonnummer', 'Bla bla bla', false, text)" />
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group">
-                    <label>Sehr wichtig</label>
-                    <input name="important" type="text" class="form-control">
-                    <small class="form-text text-muted">A really important thing.</small>
-                </div>
+                <th:block th:replace="::field('important', 'Sehr wichtige Sache', 'Bla bla bla', true, text)" />
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <div class="form-group">
-                    <label>Nachricht</label>
-                    <textarea class="form-control"></textarea>
-                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
+                <th:block th:replace="::field('text', 'Nachricht', 'Bla bla bla', true, longtext)" />
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <button class="btn btn-primary">
-                    <i></i>
+                <button th:formaction="@{send}" formmethod="post"
+                        class="btn btn-primary">
+                    <i class="fa fa-send"></i>
                     Nachricht verschicken
                 </button>
             </div>
