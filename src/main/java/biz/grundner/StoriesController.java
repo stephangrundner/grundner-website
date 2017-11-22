@@ -44,7 +44,7 @@ public class StoriesController {
         }
 
         model.addAttribute("stories", stories);
-        model.addAttribute("label", "Stories");
+        model.addAttribute("label", "Stephan Grundner");
 
         return "stories/index";
     }
