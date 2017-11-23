@@ -15,14 +15,10 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
-<link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
+<link rel="stylesheet" href="/css/animate.css" />
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css?family=Quicksand:300');
 .footer {
 	padding-bottom: 55px;
-}
-_h1 {
-	font-family: 'Quicksand', sans-serif !important;
 }
 </style>
 
@@ -120,16 +116,25 @@ _h1 {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/js/jquery.unveil.js"></script>
+<script src="/js/jquery.waypoints.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function($) {
-	$("img").unveil(0, function(e) {
-		$(this).hide().fadeIn(800);
-	});
-
 	$("input[name='important']")
 		.closest(".row")
 		.hide();
+
+	$("img").unveil(0, function() {
+		$(this).hide().fadeIn(400);
+		// Waypoint.refreshAll();
+	});
+
+	/* $(".story-chapter").waypoint(function(direction) {
+		if (direction === "down") {
+			var element = $(this.element);
+			element.addClass("animated rollIn");
+		}
+	}, {offset: '50%'}); */
 });
 </script>
 </body>

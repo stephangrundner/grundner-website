@@ -1,4 +1,4 @@
-package biz.grundner;
+package biz.grundner.story;
 
 import biz.jovido.seed.content.Item;
 import biz.jovido.seed.content.ItemService;
@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +17,13 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(path = {"/", "/stories/"})
-public class StoriesController {
+public class StoryController {
 
     @Autowired
     private ItemService itemService;
+
+    @Autowired
+    private StoryService storyService;
 
     @Autowired
     private EntityManager entityManager;
@@ -38,9 +40,9 @@ public class StoriesController {
         TypedQuery<Item> query = entityManager.createQuery(qlString, Item.class);
         query.setParameter(1, "story");
 
-        List stories = new ArrayList();
+        List<Story> stories = new ArrayList<>();
         for (Item item : query.getResultList()) {
-            stories.add(itemService.toMap(item));
+            itemService.itemToModel(item, model);
         }
 
         model.addAttribute("stories", stories);

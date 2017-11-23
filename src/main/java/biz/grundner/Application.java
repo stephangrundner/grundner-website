@@ -60,67 +60,73 @@ public class Application {
         };
     }
 
-    private void photo(Configurer configurer) {
+    private void textOnlyChapter(Configurer configurer) {
         configurer
-                .createStructure("photo").setNestedOnly(true)
-                .addImageAttribute("image")
-                .addTextAttribute("title")
-                    .setRequired(1)
-                .setLabelAttribute("title");
+                .createStructure("textOnlyChapter").setNestedOnly(true)
+                    .addTextAttribute("title")
+                    .addTextAttribute("subtitle")
+                    .addTextAttribute("text")
+                        .setMultiline(true)
+                    .setLabelAttribute("title");
     }
 
-    private void textChapter(Configurer configurer) {
+    private void photoOnlyChapter(Configurer configurer) {
         configurer
-                .createStructure("textChapter").setNestedOnly(true)
-                .addTextAttribute("title")
-                .addTextAttribute("subtitle")
-                .addTextAttribute("text")
-                    .setCapacity(Integer.MAX_VALUE)
-                    .setMultiline(true)
-                .setLabelAttribute("title");
+                .createStructure("photoOnlyChapter").setNestedOnly(true)
+                    .addImageAttribute("photo")
+                    .addSelectionAttribute("type")
+                        .addOption("standard")
+                        .addOption("wide")
+                        .addOption("tall")
+                        .addOption("full")
+                    .setLabelAttribute("title");
     }
 
-    private void stageChapter(Configurer configurer) {
+    private void threePhotosChapter(Configurer configurer) {
         configurer
-                .configure(this::photo)
-                .createStructure("stageChapter").setNestedOnly(true)
-                .addTextAttribute("title")
-                .addItemAttribute("photo").setCapacity(1)
-                    .addAcceptedStructure("photo")
-                .setLabelAttribute("title");
+                .createStructure("threePhotosChapter").setNestedOnly(true)
+                    .addImageAttribute("photos")
+                        .setCapacity(3)
+                        .setRequired(3)
+                    .addSelectionAttribute("layout")
+                        .addOption("twoToOne")
+                        .addOption("oneToTwo")
+                    .setLabelAttribute("title");
     }
 
-    private void photoChapter(Configurer configurer) {
+    private void photoWithTextChapter(Configurer configurer) {
         configurer
-                .configure(this::photo)
-                .createStructure("photoChapter").setNestedOnly(true)
-                .addItemAttribute("photos").setCapacity(9)
-                    .addAcceptedStructure("photo")
-                .addSelectionAttribute("layout")
-                    .addOption("standard")
-                    .addOption("wide")
-                    .addOption("tall")
-                    .addOption("full")
-                    .addOption("twoToOne")
-                    .addOption("oneToTwo")
-                    .addOption("threeToOne")
-                    .addOption("oneToThree");
+                .createStructure("photoWithTextChapter").setNestedOnly(true)
+                    .addImageAttribute("photo")
+                    .addTextAttribute("title")
+                    .addTextAttribute("subtitle")
+                    .addTextAttribute("text")
+                        .setMultiline(true)
+                    .addSelectionAttribute("layout")
+                        .addOption("photoLeft")
+                        .addOption("textLeft")
+                        .addOption("stacked")
+                    .setLabelAttribute("title");
     }
+
 
     public void story(Configurer configurer) {
         configurer
-                .configure(this::textChapter)
-                .configure(this::photoChapter)
-                .configure(this::stageChapter)
+                .configure(this::textOnlyChapter)
+                .configure(this::photoOnlyChapter)
+                .configure(this::threePhotosChapter)
+                .configure(this::photoWithTextChapter)
                 .createHierarchy("menu")
                 .createStructure("story").setPublishable(true)
                     .addTextAttribute("title")
                     .addTextAttribute("subtitle")
-                    .addTextAttribute("description")
+                    .addTextAttribute("summary")
+                    .addImageAttribute("photo")
                     .addItemAttribute("chapters").setCapacity(Integer.MAX_VALUE)
-                        .addAcceptedStructure("textChapter")
-                        .addAcceptedStructure("photoChapter")
-                        .addAcceptedStructure("stageChapter")
+                        .addAcceptedStructure("textOnlyChapter")
+                        .addAcceptedStructure("photoOnlyChapter")
+                        .addAcceptedStructure("threePhotosChapter")
+                        .addAcceptedStructure("photoWithTextChapter")
                     .setLabelAttribute("title");
     }
 

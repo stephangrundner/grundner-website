@@ -5,17 +5,69 @@
       description='Eine Liste aktueller Geschichten von Stephan Grundner')">
 <th:block th:fragment="main">
 
+
 <div class="container">
-    <div class="row" th:each="story : ${stories}">
-        <div class="col-md-6 offset-md-4">
-            <h2 class="text-uppercase" th:text="${story.title[0].value}">Story title</h2>
-            <small class="text-muted" th:text="${#dates.format(story.date, 'dd MMMM yyyy')}">Date</small>
-            <p>
-                <a th:href="${story.url}">Go to</a>
-            </p>
+    <!--<div class="row">-->
+        <!--<div class="col-md-12">-->
+            <!--<h1>Willkommen</h1>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="row" >
+        <div class="card-columns">
+            <div class="card"
+                 th:each="story : ${stories}"
+                 th:with="thumbnail=${story[thumbnail]}">
+
+                <th:block th:if="${thumbnail != null}">
+                    <a th:href="${story.url}">
+                        <img class="card-img-top" th:data-src="${thumbnail.image[0].url}"
+                             alt="Card image cap">
+                        <noscript>
+                            <img class="card-img-top" th:src="${thumbnail.image[0].url}"
+                                 alt="Card image cap">
+                        </noscript>
+                    </a>
+                </th:block>
+                <div class="card-body">
+                    <a th:href="${story.url}">
+                        <h4 class="card-title" th:text="${story.title[0].value}">Card title that wraps to a new line</h4>
+
+                    </a>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <small class="text-muted" th:text="${#dates.format(story.date, 'dd MMMM yyyy')}">Date</small>
+                </div>
+            </div>
         </div>
+
+        <!--<div class="col-md-8 offset-md-2">-->
+            <!--<h2 class="text-uppercase" th:text="${story.title[0].value}">Story title</h2>-->
+            <!--<small class="text-muted" th:text="${#dates.format(story.date, 'dd MMMM yyyy')}">Date</small>-->
+            <!--<p>-->
+                <!--<a th:href="${story.url}">Go to</a>-->
+            <!--</p>-->
+        <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 </div>
+
+
+
 
 </th:block>
 </html>
