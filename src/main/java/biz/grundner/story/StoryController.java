@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Stephan Grundner
@@ -39,9 +41,11 @@ public class StoryController {
         TypedQuery<Item> query = entityManager.createQuery(qlString, Item.class);
         query.setParameter(1, "story");
 
-        Model stories = new ExtendedModelMap();
+        List<Object> stories = new ArrayList<>();
         for (Item item : query.getResultList()) {
-            itemService.itemToModel(item, stories);
+            ExtendedModelMap story = new ExtendedModelMap();
+            itemService.itemToModel(item, story);
+            stories.add(story);
         }
 
         model.addAttribute("stories", stories);

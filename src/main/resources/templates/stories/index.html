@@ -16,26 +16,21 @@
     <div class="row" >
         <div class="card-columns">
             <div class="card"
-                 th:each="story : ${stories}"
-                 th:with="thumbnail=${story[thumbnail]}">
+                 th:each="story : ${stories}">
 
-                <th:block th:if="${thumbnail != null}">
+                <th:block th:if="${story.photo != null}">
                     <a th:href="${story.url}">
-                        <img class="card-img-top" th:data-src="${thumbnail.image[0].url}"
+                        <img class="card-img-top" th:src="${story.photo.url}"
                              alt="Card image cap">
-                        <noscript>
-                            <img class="card-img-top" th:src="${thumbnail.image[0].url}"
-                                 alt="Card image cap">
-                        </noscript>
                     </a>
                 </th:block>
                 <div class="card-body">
                     <a th:href="${story.url}">
-                        <h4 class="card-title" th:text="${story.title[0].value}">Card title that wraps to a new line</h4>
+                        <h4 class="card-title" th:text="${story.title.value}">Card title that wraps to a new line</h4>
 
                     </a>
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <small class="text-muted" th:text="${#dates.format(story.date, 'dd MMMM yyyy')}">Date</small>
+                    <small class="text-muted" th:text="${#dates.format(story.$item.createdAt, 'dd MMMM yyyy')}">Date</small>
                 </div>
             </div>
         </div>
