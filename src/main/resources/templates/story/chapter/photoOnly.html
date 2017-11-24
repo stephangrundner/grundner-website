@@ -1,3 +1,18 @@
 <html xmlns:th="//www.thymeleaf.org" th:remove="tag">
-photo only
+<th:block th:with="photo = ${chapter.photo}">
+    <div th:if="${chapter.type.value == 'standard'}" class="story-chapter container">
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid" th:data-src="${photo.url}">
+            </div>
+        </div>
+    </div>
+    <div th:if="${chapter.type.value == 'full'}" class="story-chapter container-fluid" >
+        <div class="row">
+            <div class="col-md-12" style="padding:0;">
+                <img class="img-fluid" style="width:100%;" th:data-src="${photo.url}" />
+            </div>
+        </div>
+    </div>
+</th:block>
 </html>

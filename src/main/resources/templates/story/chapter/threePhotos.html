@@ -1,3 +1,38 @@
 <html xmlns:th="//www.thymeleaf.org" th:remove="tag">
-three photos
+<div th:if="${chapter.layout.value == 'twoToOne'}" class="story-chapter container">
+    <div class="row align-items-end">
+        <div class="col-sm-6">
+            <img class="img-fluid"  th:data-src="${chapter.photos[0]?.url}" />
+        </div>
+        <div class="col-sm-6">
+            <img class="img-fluid" th:data-src="${chapter.photos[1]?.url}" />
+        </div>
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="img-fluid" th:data-src="${chapter.photos[2]?.url}" />
+        </div>
+    </div>
+</div>
+<div th:if="${chapter.layout.value == 'oneToTwo'}" class="story-chapter container">
+    <div class="row">
+        <div class="col-sm-12">
+            <img class="img-fluid" th:data-src="${chapter.photos[0]?.url}" />
+        </div>
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <img class="img-fluid"  th:data-src="${chapter.photos[1]?.url}" />
+        </div>
+        <div class="col-sm-6">
+            <img class="img-fluid" th:data-src="${chapter.photos[2]?.url}" />
+        </div>
+    </div>
+</div>
 </html>

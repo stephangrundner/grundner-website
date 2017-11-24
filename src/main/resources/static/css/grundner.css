@@ -1,0 +1,23 @@
+
+
+@media (max-width: 768px) {
+    .display-2 {
+        font-size: 2.4em !important;
+    }
+    .subtitle {
+        font-size: 1.2em;
+    }
+}
+
+@media (min-width: 769px) {
+    .display-2 {
+        font-size: 3.8em !important;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1440px;
+    }
+}

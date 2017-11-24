@@ -6,12 +6,51 @@
 
 <th:block th:fragment="main">
 <style>
-.story-page-chapter {
-    padding-bottom: 55px;
+@keyframes fly-in {
+    0%   {left:0px; top:25px; opacity:0;}
+    100% {left:0px; top:0px;  opacity:1;}
 }
+
+.fly-in {
+    animation-name: fly-in;
+    animation-duration: 0.5s;
+    position: relative;
+}
+
+.fly-in-second {
+    animation-name: fly-in;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    position: relative;
+}
+
 </style>
-    <div th:each="chapter : ${story.chapters}" class="story-chapter">
+
+<div th:if="${photo != null && !photo.isEmpty()}" class="container-fluid">
+    <div class="row stage" th:style="'
+             background-image: url(__${photo[url]}__);
+             background-size: cover;
+             background-position: center;'">
+
+        <div class="col text-center stage-overlay">
+            <div class="stage-content">
+                <h1 class="title display-1 text-uppercase text-justified fly-in">
+                    <span th:text="${title?.value}">Title</span>
+                </h1>
+                <span class="subtitle fly-in-second"
+                      th:text="${subtitle?.value}">Subtitle</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:if="${photo == null}">
+
+</th:block>
+<div class="story-chapter-container">
+    <div th:each="chapter : ${chapters}">
         <th:block th:replace="${chapter.template}" />
     </div>
+</div>
 </th:block>
 </html>

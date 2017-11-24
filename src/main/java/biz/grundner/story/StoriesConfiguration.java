@@ -1,5 +1,8 @@
 package biz.grundner.story;
 
+import biz.jovido.seed.content.ItemService;
+import biz.jovido.seed.content.ModelFactoryProvider;
+import biz.jovido.seed.content.SimpleModelFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,13 +32,13 @@ public class StoriesConfiguration extends WebMvcConfigurerAdapter {
         return validatorFactoryBean;
     }
 
-//    @Bean
-//    public StoryModelFactory storyModelFactory(ModelFactoryProvider modelFactoryProvider, ItemService itemService) {
-//        StoryModelFactory modelFactory = new StoryModelFactory(itemService);
-//        modelFactoryProvider.getModelFactories().add(modelFactory);
-//
-//        return modelFactory;
-//    }
+    @Bean
+    public SimpleModelFactory smartModelFactory(ModelFactoryProvider modelFactoryProvider, ItemService itemService) {
+        SimpleModelFactory modelFactory = new SimpleModelFactory(itemService);
+        modelFactoryProvider.getModelFactories().add(modelFactory);
+
+        return modelFactory;
+    }
 
     @Bean
     public JavaMailSender mailSender() {

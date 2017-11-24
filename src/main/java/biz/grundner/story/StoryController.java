@@ -4,13 +4,12 @@ import biz.jovido.seed.content.Item;
 import biz.jovido.seed.content.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Stephan Grundner
@@ -40,9 +39,9 @@ public class StoryController {
         TypedQuery<Item> query = entityManager.createQuery(qlString, Item.class);
         query.setParameter(1, "story");
 
-        List<Story> stories = new ArrayList<>();
+        Model stories = new ExtendedModelMap();
         for (Item item : query.getResultList()) {
-            itemService.itemToModel(item, model);
+            itemService.itemToModel(item, stories);
         }
 
         model.addAttribute("stories", stories);

@@ -63,40 +63,40 @@ public class Application {
     private void textOnlyChapter(Configurer configurer) {
         configurer
                 .createStructure("textOnlyChapter").setNestedOnly(true)
+                    .setTemplate("story/chapter/textOnly")
                     .addTextAttribute("title")
                     .addTextAttribute("subtitle")
                     .addTextAttribute("text")
                         .setMultiline(true)
-                    .setLabelAttribute("title");
+                    .addYesNoAttribute("inverted");
     }
 
     private void photoOnlyChapter(Configurer configurer) {
         configurer
                 .createStructure("photoOnlyChapter").setNestedOnly(true)
+                    .setTemplate("story/chapter/photoOnly")
                     .addImageAttribute("photo")
                     .addSelectionAttribute("type")
                         .addOption("standard")
-                        .addOption("wide")
-                        .addOption("tall")
-                        .addOption("full")
-                    .setLabelAttribute("title");
+                        .addOption("full");
     }
 
     private void threePhotosChapter(Configurer configurer) {
         configurer
                 .createStructure("threePhotosChapter").setNestedOnly(true)
+                    .setTemplate("story/chapter/threePhotos")
                     .addImageAttribute("photos")
                         .setCapacity(3)
                         .setRequired(3)
                     .addSelectionAttribute("layout")
                         .addOption("twoToOne")
-                        .addOption("oneToTwo")
-                    .setLabelAttribute("title");
+                        .addOption("oneToTwo");
     }
 
     private void photoWithTextChapter(Configurer configurer) {
         configurer
                 .createStructure("photoWithTextChapter").setNestedOnly(true)
+                    .setTemplate("story/chapter/photoWithText")
                     .addImageAttribute("photo")
                     .addTextAttribute("title")
                     .addTextAttribute("subtitle")
@@ -104,9 +104,7 @@ public class Application {
                         .setMultiline(true)
                     .addSelectionAttribute("layout")
                         .addOption("photoLeft")
-                        .addOption("textLeft")
-                        .addOption("stacked")
-                    .setLabelAttribute("title");
+                        .addOption("textLeft");
     }
 
 
@@ -118,6 +116,7 @@ public class Application {
                 .configure(this::photoWithTextChapter)
                 .createHierarchy("menu")
                 .createStructure("story").setPublishable(true)
+                    .setTemplate("story")
                     .addTextAttribute("title")
                     .addTextAttribute("subtitle")
                     .addTextAttribute("summary")

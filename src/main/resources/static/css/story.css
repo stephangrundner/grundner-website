@@ -1,0 +1,47 @@
+
+.title {
+    font-weight: 600 !important;
+}
+
+.subtitle {
+    font-family: bad-script, cursive !important;
+    font-weight: 200 !important;
+}
+
+.stage {
+    height: calc(100vh - 56px);
+    color: white;
+    margin-bottom: 45px;
+}
+
+.stage .stage-overlay {
+    background: rgba(0,0,0,0.5);
+    height: 100%;
+    _color: white;
+}
+
+.stage .stage-overlay .stage-content {
+    position: relative;
+    top: 32%;
+}
+
+.stage .subtitle {
+    font-size: 2em;
+    color: white;
+}
+
+.story-chapter {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+.story-chapter-inverted {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+.story-chapter-inverted * {
+    color: white !important;
+}

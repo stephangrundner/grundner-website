@@ -1,3 +1,28 @@
 <html xmlns:th="//www.thymeleaf.org" th:remove="tag">
-text with photo
+<div class="story-chapter container">
+    <div th:if="${chapter.layout.value == 'photoLeft'}" class="row align-items-center">
+        <div class="col-sm-6">
+            <img class="img-fluid" th:data-src="${chapter.photo.url}" />
+        </div>
+        <div class="col-sm-6 text-center">
+            <h2 th:text="${chapter.title.value}" class="title display-2 text-uppercase">Title</h2>
+            <h3 th:text="${chapter.subtitle.value}" class="subtitle">Subtitle</h3>
+            <p th:utext="${chapter.text.value}">
+                Text
+            </p>
+        </div>
+    </div>
+    <div th:if="${chapter.layout.value == 'textLeft'}" class="row align-items-center">
+        <div class="col-sm-6 text-center">
+            <h2 th:text="${chapter.title.value}" class="title display-2 text-uppercase">Title</h2>
+            <h3 th:text="${chapter.subtitle.value}" class="subtitle">Subtitle</h3>
+            <p th:utext="${chapter.text.value}">
+                Text
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <img class="img-fluid" th:data-src="${chapter.photo.url}" />
+        </div>
+    </div>
+</div>
 </html>
