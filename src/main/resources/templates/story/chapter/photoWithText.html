@@ -4,7 +4,7 @@
         <div class="col-sm-6">
             <img class="img-fluid" th:data-src="${chapter.photo.url}" />
         </div>
-        <div class="col-sm-6 text-center">
+        <div class="col-sm-6 text-center" data-animate="bounceInUp">
             <h2 th:text="${chapter.title.value}" class="title display-2 text-uppercase">Title</h2>
             <h3 th:text="${chapter.subtitle.value}" class="subtitle">Subtitle</h3>
             <p th:utext="${chapter.text.value}">

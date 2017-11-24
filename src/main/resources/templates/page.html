@@ -122,24 +122,13 @@
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/js/jquery.unveil.js"></script>
 <script src="/js/jquery.waypoints.js"></script>
+<script src="/js/story.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function($) {
 	$("input[name='important']")
 		.closest(".row")
 		.hide();
-
-	$("img").unveil(0, function() {
-		$(this).hide().fadeIn(400);
-		// Waypoint.refreshAll();
-	});
-
-	/* $(".story-chapter").waypoint(function(direction) {
-		if (direction === "down") {
-			var element = $(this.element);
-			element.addClass("animated rollIn");
-		}
-	}, {offset: '50%'}); */
 });
 </script>
 </body>

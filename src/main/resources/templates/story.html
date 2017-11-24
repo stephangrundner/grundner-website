@@ -23,9 +23,7 @@
     animation-timing-function: ease-out;
     position: relative;
 }
-
 </style>
-
 <div th:if="${photo != null && !photo.isEmpty()}" class="container-fluid">
     <div class="row stage" th:style="'
              background-image: url(__${photo[url]}__);
@@ -48,9 +46,9 @@
 
 </th:block>
 <div class="story-chapter-container">
-    <div th:each="chapter : ${chapters}">
+    <th:block th:each="chapter : ${chapters}">
         <th:block th:replace="${chapter.template}" />
-    </div>
+    </th:block>
 </div>
 </th:block>
 </html>

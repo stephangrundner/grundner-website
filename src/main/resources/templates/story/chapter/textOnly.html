@@ -1,8 +1,8 @@
 <html xmlns:th="//www.thymeleaf.org" th:remove="tag">
-<div th:if="${!chapter.inverted.value}" class="story-chapter container">
+<div th:if="${!chapter.inverted.value}" class="story-chapter text-only-chapter container">
     <div class="row">
         <div class="col-md-8 offset-md-2 text-center">
-            <h1 class="display-3">
+            <h1 class="display-3" data-animate="bounceInUp">
                 <span class="text-primary text-uppercase" th:text="${chapter.title?.value}">Title</span>
             </h1>
             <h2 class="subtitle text-primary" th:text="${chapter.subtitle?.value}">Subtitle</h2>
@@ -15,10 +15,10 @@
         </div>
     </div>
 </div>
-<div th:if="${chapter.inverted.value}" class="story-chapter story-chapter-inverted container-fluid bg-primary ">
+<div th:if="${chapter.inverted.value}" class="story-chapter story-chapter-inverted text-only-chapter container-fluid bg-primary ">
     <div class="row">
         <div class="col-md-8 offset-md-2 text-center">
-            <h1 class="display-3">
+            <h1 class="display-3" data-animate="bounceInUp">
                 <span class="text-uppercase" th:text="${chapter.title?.value}">Title</span>
             </h1>
             <h2 class="subtitle" th:text="${chapter.subtitle?.value}">Subtitle</h2>
