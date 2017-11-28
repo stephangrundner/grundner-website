@@ -11,7 +11,8 @@
 <meta charset="utf-8" />
 <meta name="description" th:content="${description}" />
 <meta name="robots" content="noindex" th:remove="${noindex == null} ? tag : _" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <script src="//use.edgefonts.net/merriweather:n3,n4,n7,n9.js"></script>
 <script src="//use.edgefonts.net/bad-script:n4.js"></script>
@@ -34,8 +35,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-default">
 <div class="container-fluid">
 	<a class="navbar-brand" href="/">
-		<span class="font-weight-normal text-uppercase text-primary text-strong">
-			<span>Stephan Grundner</span>
+		<span class="font-weight-normal text-uppercase text-dark">
+			<strong>grundner</strong>.biz
 		</span>
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -55,14 +56,14 @@
 				th:class="${node.belongsTo(this)} ? active : _">
 				<a class="nav-link text-uppercase"
 				   th:href="${@itemService.getUrl(item)}">
-					<small th:text="${@itemService.getLabelText(item)}">Title</small>
+					<span th:text="${@itemService.getLabelText(item)}">Title</span>
 				</a>
 			</li>
 
 
 			<li class="nav-item">
 				<a class="nav-link text-uppercase" href="/contact">
-					<small>Kontakt</small>
+					<span>Kontakt</span>
 				</a>
 			</li>
 			<li class="nav-item">
@@ -91,7 +92,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col text-center text-primary">
-				<h6 class="display-4 text-uppercase">Stephan Grundner</h6>
+				<!--<h6 class="display-4 text-uppercase">Stephan Grundner</h6>-->
 				<p class="font-weight-light text-muted">
 					Fotograf and Softwareentwickler aus Tirol/Österreich
 				</p>

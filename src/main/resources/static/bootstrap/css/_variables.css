@@ -1,21 +1,21 @@
 /*
 Error: $color: 'theme-color("primary")' is not a color for `darken'
-        on line 144 of /Users/grs/Documents/Software Projekte/grundner/grundner-website/bootstrap-4.0.0-beta.2/scss/_variables.scss
+        on line 145 of /Users/grs/Documents/Software Projekte/grundner/grundner-website/bootstrap-4.0.0-beta.2/scss/_variables.scss
 
-139: //
-140: // Style anchor elements.
-141: 
-142: $link-color:                theme-color("primary") !default;
-143: $link-decoration:           none !default;
-144: $link-hover-color:          darken($link-color, 15%) !default;
-145: $link-hover-decoration:     underline !default;
-146: 
-147: // Paragraphs
-148: //
-149: // Style p element.
+140: //
+141: // Style anchor elements.
+142: 
+143: $link-color:                theme-color("primary") !default;
+144: $link-decoration:           none !default;
+145: $link-hover-color:          darken($link-color, 15%) !default;
+146: $link-hover-decoration:     underline !default;
+147: 
+148: // Paragraphs
+149: //
+150: // Style p element.
 
 Backtrace:
-/Users/grs/Documents/Software Projekte/grundner/grundner-website/bootstrap-4.0.0-beta.2/scss/_variables.scss:144
+/Users/grs/Documents/Software Projekte/grundner/grundner-website/bootstrap-4.0.0-beta.2/scss/_variables.scss:145
 /Library/Ruby/Gems/2.0.0/gems/sass-3.5.3/lib/sass/script/tree/funcall.rb:315:in `reformat_argument_error'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.5.3/lib/sass/script/tree/funcall.rb:162:in `rescue in _perform'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.5.3/lib/sass/script/tree/funcall.rb:132:in `_perform'
@@ -53,4 +53,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: $color: 'theme-color(\"primary\")' is not a color for `darken'\A         on line 144 of /Users/grs/Documents/Software Projekte/grundner/grundner-website/bootstrap-4.0.0-beta.2/scss/_variables.scss\A \A 139: //\A 140: // Style anchor elements.\A 141: \A 142: $link-color:                theme-color(\"primary\") !default;\A 143: $link-decoration:           none !default;\A 144: $link-hover-color:          darken($link-color, 15%) !default;\A 145: $link-hover-decoration:     underline !default;\A 146: \A 147: // Paragraphs\A 148: //\A 149: // Style p element."; }
+  content: "Error: $color: 'theme-color(\"primary\")' is not a color for `darken'\A         on line 145 of /Users/grs/Documents/Software Projekte/grundner/grundner-website/bootstrap-4.0.0-beta.2/scss/_variables.scss\A \A 140: //\A 141: // Style anchor elements.\A 142: \A 143: $link-color:                theme-color(\"primary\") !default;\A 144: $link-decoration:           none !default;\A 145: $link-hover-color:          darken($link-color, 15%) !default;\A 146: $link-hover-decoration:     underline !default;\A 147: \A 148: // Paragraphs\A 149: //\A 150: // Style p element."; }

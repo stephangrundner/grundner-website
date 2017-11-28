@@ -18,9 +18,9 @@
             <div class="card"
                  th:each="story : ${stories}">
 
-                <th:block th:if="${story.photo != null}">
+                <th:block th:if="${story[photo] != null}">
                     <a th:href="${story.url}">
-                        <img class="card-img-top" th:src="${story.photo.url}"
+                        <img class="card-img-top" th:src="${story[photo][small][url]}"
                              alt="Card image cap">
                     </a>
                 </th:block>

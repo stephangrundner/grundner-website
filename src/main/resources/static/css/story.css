@@ -15,7 +15,7 @@
 }
 
 .stage .stage-overlay {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.35);
     height: 100%;
     _color: white;
 }
