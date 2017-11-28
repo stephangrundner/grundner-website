@@ -119,6 +119,7 @@ public class Application {
                     .setTemplate("story")
                     .addTextAttribute("title")
                     .addTextAttribute("subtitle").setRequired(0)
+                    .addDateAttribute("date")
                     .addTextAttribute("summary")
                     .addImageAttribute("photo")
                     .addItemAttribute("chapters").setCapacity(Integer.MAX_VALUE).setRequired(0)
